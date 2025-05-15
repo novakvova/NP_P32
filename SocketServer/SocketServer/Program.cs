@@ -22,7 +22,7 @@ while (true)
 
     Console.WriteLine($"Клієнт підключився {client.RemoteEndPoint}");
 
-    var buffer = new byte[1024];
+    var buffer = new byte[10024];
     int sizeBytes = client.Receive(buffer); //Читаємо байти, що прислав сервак
 
     var text = Encoding.UTF8.GetString(buffer, 0, sizeBytes);

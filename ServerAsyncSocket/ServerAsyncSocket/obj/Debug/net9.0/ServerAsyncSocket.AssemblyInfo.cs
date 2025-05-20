@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServerAsyncSocket")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ebd457543cf336ac223e372312ca7210d55317d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c775e3a3d5b4d19e6e874aed747bc08f6df37f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServerAsyncSocket")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServerAsyncSocket")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

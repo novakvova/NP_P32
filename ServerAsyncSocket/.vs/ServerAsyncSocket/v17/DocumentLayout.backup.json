@@ -14,21 +14,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Study\\2025\\19.NP\\Projects\\ServerAsyncSocket\\ServerAsyncSocket\\Program.cs",
               "RelativeDocumentMoniker": "ServerAsyncSocket\\Program.cs",
-              "ToolTip": "D:\\Study\\2025\\19.NP\\Projects\\ServerAsyncSocket\\ServerAsyncSocket\\Program.cs",
-              "RelativeToolTip": "ServerAsyncSocket\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\Study\\2025\\19.NP\\Projects\\ServerAsyncSocket\\ServerAsyncSocket\\Program.cs*",
+              "RelativeToolTip": "ServerAsyncSocket\\Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-15T14:36:11.266Z",
               "EditorCaption": ""

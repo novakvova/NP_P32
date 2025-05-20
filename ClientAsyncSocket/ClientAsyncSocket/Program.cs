@@ -13,7 +13,8 @@ Console.WriteLine($"Search Server {endPoint}");
 
 //Асинхронно підлкючаємо до сервера
 await clientSocket.ConnectAsync(endPoint);
-string text = "Сервер, що ти сьогодні їв?";
+Console.WriteLine("Вкажіть текст повідомлення");
+string text = Console.ReadLine();
 byte[] data = System.Text.Encoding.UTF8.GetBytes(text);
 await clientSocket.SendAsync(data); //Надсилаємо асинхронно запит
 byte[] buffer = new byte[10024];

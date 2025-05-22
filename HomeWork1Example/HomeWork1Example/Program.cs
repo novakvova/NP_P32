@@ -1,5 +1,7 @@
 ﻿using System.Text;
 using System.Text.Json;
+using HomeWork1Example;
+using Newtonsoft.Json;
 
 class Program
 {
@@ -29,7 +31,7 @@ class Program
                     string imageBase64 = Convert.ToBase64String(bytes);
                     //string base64 = $"data:image/png;base64,{imageBase64}";
 
-                    var json = JsonSerializer.Serialize(new { Photo = imageBase64 });
+                    var json = System.Text.Json.JsonSerializer.Serialize(new { Photo = imageBase64 });
 
                     using var client = new HttpClient();
                     //body - запиту
@@ -39,6 +41,9 @@ class Program
                     var response = await client.PostAsync(url, content);
                     //декодуємо результат сервера - читаємо тіло відповіді
                     var result = await response.Content.ReadAsStringAsync();
+
+                    var resultObject = JsonConvert.DeserializeObject<ServerResultImage>(result);
+                    Console.WriteLine($"Server image  https://myp22.itstep.click/images/{resultObject.Image}");
 
                     //Перевіряємо статус відповіді - якщо 200 - то усе супер.  - Сервер фото зберіг
                     if (response.IsSuccessStatusCode)

@@ -21,10 +21,12 @@ NetworkStream myStream = myClient.GetStream(); //Отворюємо потік �
 Console.WriteLine("Вкажіть текст:");
 string message = Console.ReadLine();
 var bytes = Encoding.UTF8.GetBytes(message);
-myStream.Write(bytes, 0, bytes.Length); //відправляємо байти на сервер, як повідомлення
+//аналог Socket.Send
+myStream.Write(bytes, 0, bytes.Length); //відправляємо байти на сервер, як повідомлення 
 
 //Очікуємо відповіді від сервера
 byte[] listBytes = new byte[10024];
+//Отримує дані від сервера аналогічно як Socket.Receive()
 int countBytes = myStream.Read(listBytes, 0, listBytes.Length);
 string result = Encoding.UTF8.GetString(listBytes);
 

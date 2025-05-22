@@ -15,19 +15,25 @@ Console.WriteLine($"Запустили серве {listener.LocalEndpoint}");
 while (true)
 {
     //TcpClient - клас, який представляє клієнтське з'єднання
-    var client = listener.AcceptTcpClient(); //отримуємо запит від клієнта
+    var client = await listener.AcceptTcpClientAsync(); //отримуємо запит від клієнта
+    _ = Task.Run(() => HandleClientAsync(client));
+}
+
+static async Task HandleClientAsync(TcpClient client)
+{
+    
     Console.WriteLine($"Клієнт приєднався {client.Client.RemoteEndPoint.ToString()}");
     //Це потік через який ми можемо взяємодіяти із клієнтом. Це особливість використання класу TcpClient
     NetworkStream stream = client.GetStream(); //отримуємо потік даних
 
     byte[] buffer = new byte[1023];
     //Отримуємо кільсть байт від клєінта і читаємо байти в buffer
-    int bytesRead = stream.Read(buffer, 0, buffer.Length);
+    int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
     string text = Encoding.UTF8.GetString(buffer); //переводимо байти у символи.
     Console.WriteLine($"Повідомлення: {text}");
     text = $"Дякую клієте {DateTime.UtcNow.ToString()}. Смакуй.";
     buffer = Encoding.UTF8.GetBytes(text); //повімлення перетворив у байти
-    stream.Write(buffer); //відправляю повідомлення на клієнт
+    await stream.WriteAsync(buffer); //відправляю повідомлення на клієнт
     stream.Close();
     client.Close();
     Console.WriteLine("Завершив роботу із клієнтом.");

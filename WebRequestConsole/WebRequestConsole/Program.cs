@@ -8,8 +8,61 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 Console.WriteLine("Привіт. Класна погода. Треба вміти плввати і лазити по деревах. :)!");
 
-//ViewAll();
-ViewById(134);
+ViewAll();
+//ViewById(134);
+
+//var user = new UserItemModel
+//{
+//    FirstName = "Іван",
+//    SecondName = "Іванов",
+//    Photo = "https://example.com/photo.jpg",
+//    Phone = "+380123456789",
+//    Email="wwww"
+//};
+//Create(user);
+
+
+static void Create(UserItemModel user)
+{
+    var data = JsonConvert.SerializeObject(user);
+    string url = $"https://lohika.itstep.click/api/Users/create";
+    var request = (HttpWebRequest)WebRequest.Create(url);
+    request.Method = "POST";
+    request.ContentType = "application/json";
+    request.Accept = "application/json";
+
+    using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+    {
+        streamWriter.Write(data);
+    }
+
+    try
+    {
+        var response = (HttpWebResponse)request.GetResponse();
+
+        using (var streamReader = new StreamReader(response.GetResponseStream()))
+        {
+            string result = streamReader.ReadToEnd();
+            Console.WriteLine(result);
+        }
+    }
+    catch (WebException ex)
+    {
+        if (ex.Response is HttpWebResponse errorResponse)
+        {
+            using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+            {
+                string error = reader.ReadToEnd();
+                Console.WriteLine($"Error {(int)errorResponse.StatusCode}: {error}");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"WebException: {ex.Message}");
+        }
+    }
+}
+
 
 static void ViewById(int id)
 {
